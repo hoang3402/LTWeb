@@ -1,0 +1,11 @@
+﻿@using CPT.Models
+@{ 
+    ShopElectricEntities db = new ShopElectricEntities();
+    List<Product> listProduct = ProductModel.get_listProducts(1);
+}
+
+<div class="border_box">
+    <div class="product_title"><a href="details.html">@listProduct[0].Name</a></div>
+    <div class="product_img"><a href="details.html"><img src="~/Content/images/@listProduct[0].Image" alt="" border="0" /></a></div>
+    <div class="prod_price"><span class="reduce">350$</span> <span class="price">@listProduct[0].UnitPrice$</span></div>
+</div>
