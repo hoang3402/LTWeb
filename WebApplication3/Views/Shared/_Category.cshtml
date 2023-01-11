@@ -1,0 +1,16 @@
+﻿
+@model IEnumerable<CPT.Models.Category>
+<ul class="left_menu">
+    @foreach (var Category in Model)
+    {
+        if (Category.Id % 2 != 0)
+        {
+            <li class="odd"><a href="@Url.Action("ListProductFromCategory","Products",new {id = Category.Id})">@Category.Name</a></li>
+        }
+        else
+        {
+            <li class="even"><a href="@Url.Action("ListProductFromCategory","Products",new {id = Category.Id})">@Category.Name</a></li>
+        }
+    }
+</ul>
+
