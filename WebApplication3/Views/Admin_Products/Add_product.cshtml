@@ -1,0 +1,94 @@
+﻿@using WebApplication3
+@{
+    ViewBag.Title = "Add Products";
+    Layout = "~/Views/Shared/_Admin_LayoutView.cshtml";
+    List<Product> listProduct = ViewBag.Products;
+
+    //Display ComboBox Category
+    List<SelectListItem> selectList = new List<SelectListItem>();
+    List<Category> list_cate = ViewBag.CategoryList;
+    for(int i = 0; i<list_cate.Count; i++)
+    {
+        SelectListItem item = new SelectListItem();
+        item.Text = list_cate[i].Name;
+        item.Value = list_cate[i].Id.ToString();
+    }
+}
+
+<div class="center_content" style="width:100%;">
+    <div class="center_title_bar"><h2>Products Information </h2></div>
+    <div>
+        @using (Html.BeginForm("Add_product", "Admin_Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <table width="100%">
+                <tr>
+                    <td width="20%">
+                        Name:
+                    </td>
+                    <td width="80%">
+                        @Html.TextBox("txtName")
+                    </td>
+                </tr>
+                <tr>
+                    <td width="20%">
+                        Price:
+                    </td>
+                    <td width="80%">
+                        @Html.TextBox("txtPrice")
+                    </td>
+                </tr>
+                <tr>
+                    <td width="20%">
+                        Image:
+                    </td>
+                    <td width="80%">
+                        <input type="file" name="fileImage"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="20%">
+                        Product Date
+                    </td>
+                    <td width="80%">
+                        @Html.TextBox("txtProductDate")
+                    </td>
+                </tr>
+                <tr>
+                    <td width="20%">
+                        Avaliable:
+                    </td>
+                    <td width="80%">
+                        @Html.CheckBox("ckbAvaliable", true)
+                    </td>
+                </tr>
+                <tr>
+                    <td width="20%">
+                        Category:
+                    </td>
+                    <td width="80%">
+                        <select name="cmbCategory">
+                            @for(int i = 0; i<list_cate.Count; i++)
+                            {
+                                <option value="@list_cate[i].Id">@list_cate[i].Name</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="20%">
+                        Description:
+                    </td>
+                    <td width="80%">
+                        @Html.TextBox("txtDescription")
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Add a new product" />
+                    </td>
+                </tr>
+
+            </table>
+        }
+    </div>
+</div>

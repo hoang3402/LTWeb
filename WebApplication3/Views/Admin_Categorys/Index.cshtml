@@ -1,0 +1,37 @@
+﻿@using WebApplication3
+@{ 
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin_LayoutView.cshtml";
+    List<Category> listCategory = ViewBag.Category;
+}
+<h2>Category management</h2>
+<div>
+    <a href="/Admin_Categorys/Add">Add a new Category</a>
+</div>
+
+
+<div class="table-responsive">
+    <table class="table">
+        <thead class="text-primary">
+            <th>ID</th>
+            <th>Name</th>
+            <th>NameVN</th>
+            <th class="text-right">Edit</th>
+            <th class="text-right">Delete</th>
+        </thead>
+            <tbody>
+                @for (int i = 0; i < listCategory.Count; ++i)
+                {
+                    Category ct = listCategory[i];
+                    <tr>
+                        <td>@ct.Id</td>
+                        <td> <b style="color:Green;"> @ct.Name </b></td>
+                        <td> @ct.NameVN</td>
+                        <td> <a href="/Admin_Categorys/Edit/@ct.Id">Edit</a> </td>
+                        <td> <a href="/Admin_Categorys/Delete/@ct.Id">Remove</a></td>
+                    </tr>
+
+                }
+            </tbody>
+    </table>
+</div>

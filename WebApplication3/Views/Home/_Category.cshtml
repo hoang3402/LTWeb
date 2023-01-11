@@ -1,0 +1,45 @@
+﻿@using WebApplication3.Models
+@model IEnumerable<Category>
+
+@{
+    Product lastItem = ProductModel.GetProductLast();
+}
+
+<div class="left_content">
+    <div class="title_box">Categories</div>
+    <ul class="left_menu">
+        @foreach (var cate in Model)
+        {
+            if (cate.Id % 2 != 0)
+            {
+                <li class="odd">
+                    @Html.ActionLink(cate.Name, "ViewByIdCategory", "Admin_Categorys", new { id = cate.Id }, null)
+                </li>
+            }
+            else
+            {
+                <li class="even">
+                    @Html.ActionLink(cate.Name, "ViewByIdCategory", "Admin_Categorys", new { id = cate.Id }, null)
+                </li>
+            }
+        }
+    </ul>
+    <div class="title_box">Special Products</div>
+    <div class="border_box">
+        <div class="product_title"><a href="details.html">@lastItem.Name</a></div>
+        <div class="product_img">
+            <a href="details.html"><img src="~/Content/_User/images/@lastItem.Image" alt="" border="0" /></a>
+        </div>
+        <div class="prod_price"><span class="reduce">350$</span> <span class="price">@lastItem.UnitPrice$</span></div>
+    </div>
+    <div class="title_box">Newsletter</div>
+    <div class="border_box">
+        <input type="text" name="newsletter" class="newsletter_input" value="your email" />
+        <a href="#" class="join">join</a>
+    </div>
+    <div class="banner_adds">
+        <a href="#">
+            <img src="~/Content/_User/images/bann2.jpg" alt="" border="0" />
+        </a>
+    </div>
+</div>

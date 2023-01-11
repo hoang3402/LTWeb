@@ -1,0 +1,41 @@
+﻿@using WebApplication3
+@{ 
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Admin_LayoutView.cshtml";
+
+    //Category ct = ViewBag.CategoryId;
+    Category ct = Model;
+}
+
+<div style="width:100%;">
+    <div><h2>Category Infomation</h2></div>
+    <p>
+        @using (Html.BeginForm("Edit", "Admin_Categorys",FormMethod.Post,new { enctype = "multipart/form-data" }))
+        {
+        <table>
+            <tr>
+                <td width="20%">
+                    <input type="hidden" name="hiddenId_Category" value="@ct.Id" />
+                    Name Category
+                </td>
+                <td width="80%">
+                    @Html.TextBox("txtName", ct.Name)
+                </td>
+            </tr>
+            <tr>
+                <td width="20%">
+                    Name Category (VN)
+                </td>
+                <td width="80%">
+                    @Html.TextBox("txtNameVN", ct.NameVN)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Update Category"/>
+                </td>
+            </tr>
+        </table>
+        }
+    </p>
+</div>

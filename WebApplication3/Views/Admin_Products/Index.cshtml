@@ -1,0 +1,41 @@
+﻿@using WebApplication3
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin_LayoutView.cshtml";
+    List<Product> listProduct = ViewBag.Products;
+}
+<h2>Product management</h2>
+<div>
+    <a href="/Admin_Products/Add_product">Add a new Product</a>
+</div>
+<div class="border_box" style="width:100%;">
+    <table border="1" width="100%" cellpadding="4" cellspacing="0">
+        <tr style="background-color:Gray;">
+            <td>ID</td>
+            <td>Name</td>
+            <td>Unit Peice</td>
+            <td>Image</td>
+            <td>Product Date</td>
+            <td>Avaliable</td>
+            <td>Category Id</td>
+            <td>Description</td>
+        </tr>
+        @for (int i = 0; i < listProduct.Count; ++i)
+        {
+            Product pt = listProduct[i];
+            <tr>
+                <td>@pt.Id</td>
+                <td> <b style="color:Green;"> @pt.Name </b></td>
+                <td> @pt.UnitPrice</td>
+                <td>@pt.Image</td>
+                <td>@pt.ProductDate</td>
+                <td>@pt.Available</td>
+                <td>@pt.CategoryId</td>
+                <td>@pt.Description</td>
+                <td> <a href="/Admin_Products/EditProduct/@pt.Id">Edit</a> </td>
+                <td> <a href="/Admin_Products/DeleteProduct/@pt.Id">Remove</a></td>
+            </tr>
+
+        }
+    </table>
+</div>
