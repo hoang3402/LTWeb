@@ -51,7 +51,17 @@
                     <li class="divider"></li>
                     <li><a href="#" class="nav3">Specials</a></li>
                     <li class="divider"></li>
-                    <li><a href="/Customers/Login" class="nav4">My account</a></li>
+                    <li>
+                        @if (Session["User"] is null)
+                        {
+                            <a href="/Customers/Login" class="nav4">My account</a>
+                        }
+                        else
+                        {
+                            Customer temp = Session["User"] as Customer;
+                            <a href="/Customers/Login" class="nav4">@temp.Fullname</a>
+                        }
+                    </li>
                     <li class="divider"></li>
                     <li><a href="/Customers/Register" class="nav4">Sign Up</a></li>
                     <li class="divider"></li>

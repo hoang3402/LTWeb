@@ -47,6 +47,10 @@ namespace WebApplication3.Controllers.Customer
         [HttpGet]
         public ActionResult Login()
         {
+            if (Session["User"] != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
         public ActionResult Login(FormCollection collection)
@@ -68,11 +72,15 @@ namespace WebApplication3.Controllers.Customer
                 {
                     ViewBag.ThongBao = "Login Success";
                     Session["User"] = customer;
+                    return RedirectToAction("Index", "Home");
                 }
                 else
+                {
                     ViewBag.ThongBao = "Login Faile \n Please Type Email Or Password";
+                    return View();
+                }
             }
-            return View();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
