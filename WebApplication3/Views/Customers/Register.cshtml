@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="center_content">
+    <div class="center_title_bar">Register</div>
+    <div style="padding-block: 50px">
+        <h2 style="text-align: center">REGISTER</h2>
+        <table align="center">
+
+            @using (Html.BeginForm())
+            {
+
+                @Html.ValidationSummary(true)
+                <tr style="height: 40px">
+                    <td>Full Name</td>
+                    <td>
+                        @Html.TextBox("Fullname")
+                        @ViewData["Loi1"]
+                    </td>
+                </tr>
+                <tr style="height: 40px">
+                    <td>Email</td>
+                    <td>
+                        @Html.TextBox("Email")
+                        @ViewData["Loi2"]
+                    </td>
+                </tr>
+                <tr style="height: 40px">
+                    <td>Password</td>
+                    <td>
+                        @Html.Password("Password")
+                        @ViewData["Loi3"]
+                    </td>
+                </tr>
+                <tr style="height: 40px">
+                    <td></td>
+                    <td>
+                        <input type="submit" name="dk" value="Đăng Ký" />
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
