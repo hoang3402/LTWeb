@@ -21,6 +21,10 @@ namespace WebApplication3.Controllers
             ViewBag.Total = TotalMoney();
             return PartialView("_Cart");
         }
+        public ActionResult ConfirmCart()
+        {
+            return View();
+        }
         public List<Cart> GetCarts()
         {
             List<Cart> carts = Session["Cart"] as List<Cart>;
@@ -83,6 +87,21 @@ namespace WebApplication3.Controllers
             ViewBag.Amount = TotalAmount();
             ViewBag.Total = TotalMoney();
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Order()
+        {
+            if (Session["User"] is null || string.IsNullOrWhiteSpace(Session["User"].ToString()))
+            {
+                return RedirectToAction("Login", "Customers");
+            }
+            if (Session["Cart"] is null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            Session["Cart"] = null;
+            return View("ConfirmCart");
         }
     }
 }

@@ -6,34 +6,37 @@
 }
 <div class="center_content">
     <div class="center_title_bar">Cart</div>
-    <table>
-        <tr>
-            <td>Tên sản phẩm</td>
-            <td>Số lượng</td>
-            <td>Đơn giá</td>
-            <td>Thành tiền</td>
-            <td></td>
-            <td></td>
-        </tr>
-        @foreach (Cart item in data)
-        {
-        <tr>
-            <td>@item.product.Name</td>
-            <td><img src="~/Content/_User/images/@item.product.Image" alt="" border="0" /></td>
-            <td>@item.Amount</td>
-            <td>@item.product.UnitPrice</td>
-            <td>@item.Total</td>
-            <td>@Html.ActionLink("Xóa", "Remove", "Cart", new {id = item.product.Id}, null)</td>
-        </tr>
-        }
-        <tr>
-            <td>Tổng sản phẩm: @ViewBag.Amount</td>
-            <td>Tổng Tiền: @ViewBag.Total</td>
-        </tr>
-        <tr>
-            <td>
-                <button type="submit">Chốt đơn!</button>
-            </td>
-        </tr>
-    </table>
+    @using (Html.BeginForm("Order","Cart", FormMethod.Get))
+    {
+        <table>
+            <tr>
+                <td>Tên sản phẩm</td>
+                <td>Số lượng</td>
+                <td>Đơn giá</td>
+                <td>Thành tiền</td>
+                <td></td>
+                <td></td>
+            </tr>
+            @foreach (Cart item in data)
+            {
+                <tr>
+                    <td>@item.product.Name</td>
+                    <td><img src="~/Content/_User/images/@item.product.Image" alt="" border="0" /></td>
+                    <td>@item.Amount</td>
+                    <td>@item.product.UnitPrice</td>
+                    <td>@item.Total</td>
+                    <td>@Html.ActionLink("Xóa", "Remove", "Cart", new { id = item.product.Id }, null)</td>
+                </tr>
+            }
+            <tr>
+                <td>Tổng sản phẩm: @ViewBag.Amount</td>
+                <td>Tổng Tiền: @ViewBag.Total</td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit">Chốt đơn!</button>
+                </td>
+            </tr>
+        </table>
+    }
 </div>

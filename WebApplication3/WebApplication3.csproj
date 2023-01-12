@@ -303,10 +303,12 @@
     <Content Include="Views\Cart\ShowDetail.cshtml" />
     <Content Include="Views\Customers\Register.cshtml" />
     <Content Include="Views\Customers\Login.cshtml" />
+    <Content Include="Views\Cart\ConfirmCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
+    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
