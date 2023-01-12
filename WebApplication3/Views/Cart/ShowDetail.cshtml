@@ -4,6 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     List<Cart> data = ViewBag.data;
 }
+<head>
+    <link href="@Url.Content("~/Content/ShowCart.css")" rel="stylesheet" type="text/css" />
+</head>
+
 <div class="center_content">
     <div class="center_title_bar">Cart</div>
     @using (Html.BeginForm("Order","Cart", FormMethod.Get))
@@ -23,14 +27,14 @@
                     <td>@item.product.Name</td>
                     <td><img src="~/Content/_User/images/@item.product.Image" alt="" border="0" /></td>
                     <td>@item.Amount</td>
-                    <td>@item.product.UnitPrice</td>
-                    <td>@item.Total</td>
+                    <td>@item.product.UnitPrice$</td>
+                    <td>@item.Total$</td>
                     <td>@Html.ActionLink("Xóa", "Remove", "Cart", new { id = item.product.Id }, null)</td>
                 </tr>
             }
             <tr>
                 <td>Tổng sản phẩm: @ViewBag.Amount</td>
-                <td>Tổng Tiền: @ViewBag.Total</td>
+                <td>Tổng Tiền: @ViewBag.Total$</td>
             </tr>
             <tr>
                 <td>

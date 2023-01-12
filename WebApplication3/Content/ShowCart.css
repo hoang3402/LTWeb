@@ -1,0 +1,15 @@
+﻿table {
+    border: 1px solid;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+tr,td {
+    margin: 1px;
+    border: 1px solid;
+}
+
+#main_content > div.center_content > form > table > tbody > tr:nth-child(4) {
+    align-content: center;
+}
